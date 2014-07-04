@@ -21,6 +21,7 @@ mysql -u root -p $WPDBNAME < $VHOST_DIR$SITE/www/dump.sql
 rm -rf $VHOST_DIR$SITE/www/dump.sql
 
 echo "Chmod dirs in '$VHOST_DIR$SITE/www'"
+chown -R www-data:www-data $VHOST_DIR$SITE/www/*
 chmod -R 755 $VHOST_DIR$SITE/www
 chmod -R 777 $VHOST_DIR$SITE/www/wp-content/uploads
 
