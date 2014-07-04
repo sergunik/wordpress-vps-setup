@@ -16,8 +16,8 @@ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $WPDBNAME DEFAULT CHARACTER S
 echo "Create user '$WPDBUSER' with privileges (need mysql root password)"
 mysql -u root -p -e "CREATE USER '$WPDBUSER'@'localhost' IDENTIFIED BY '$WPDBPASS'; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,LOCK TABLES ON $WPDBNAME.* TO '$WPDBUSER'@'localhost';"
 
-echo "Import data to database from dump (need mysql root password)"
-mysql -u root -p $WPDBNAME < $VHOST_DIR$SITE/www/dump.sql
+echo "Import data to database from dump"
+mysql -u ${WPDBUSER} -p${WPDBPASS} ${WPDBNAME} < $VHOST_DIR$SITE/www/dump.sql
 rm -rf $VHOST_DIR$SITE/www/dump.sql
 
 echo "Chmod dirs in '$VHOST_DIR$SITE/www'"
