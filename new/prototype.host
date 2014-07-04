@@ -1,0 +1,73 @@
+server {
+        listen   80;
+
+        server_name www.%SITE%;
+        return 301 http://%SITE%$request_uri;
+}
+
+server {
+        listen   80;
+
+        server_name %SITE%;
+        root /var/vhost/%SITE%/www;
+        index index.php;
+        autoindex off;
+
+        access_log /var/vhost/%SITE%/log/access.log;
+        error_log /var/vhost/%SITE%/log/error.log;
+
+        error_page 403 = 404;
+
+        location / {
+                try_files $uri $uri/ index.php;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+
+        location ~ \.php$ {
+                fastcgi_pass 127.0.0.1:9000;
+                fastcgi_index index.php;
+                include fastcgi_params;
+        }
+
+        #Common deny or internal locations, to help prevent access to areas of
+        #the site that should not be public
+        location ~ ^/wp-admin/(.*)$ {
+                auth_basic "Administrator Login";
+                auth_basic_user_file /var/vhost/%SITE%/www/.htpasswd;
+        }
+        location ~* wp-admin/includes {
+                deny all;
+        }
+        location ~* wp-config.php {
+                deny all;
+        }
+
+        #Prevent any potentially-executable files in the uploads directory from
+        #being executed by forcing their MIME type to text/plain
+        location ~* ^/wp-content/uploads/.*.(html|htm|shtml|php)$ {
+                types { }
+                default_type text/plain;
+        }
+
+        #Keep images and CSS around in browser cache for as long as possible,
+        #to cut down on server load
+        #location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        #        expires max;
+        #        log_not_found off;
+        #}
+
+        location /favicon.ico {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+        location /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+}
