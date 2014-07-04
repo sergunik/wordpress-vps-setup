@@ -16,7 +16,7 @@ sed "s/%SITE%/$SITE/g" prototype.host > ${NGINX_DIR}sites-available/${VHOST_FILE
 echo "Create symlink for vhost file"
 ln -s ${NGINX_DIR}sites-available/${VHOST_FILE} ${NGINX_DIR}sites-enabled/${VHOST_FILE}
 
-echo "Create dirs"
+echo "Create dirs in '$VHOST_DIR$SITE'"
 mkdir $VHOST_DIR$SITE
 mkdir $VHOST_DIR$SITE/www
 mkdir $VHOST_DIR$SITE/log
@@ -32,3 +32,6 @@ htpasswd -c $VHOST_DIR$SITE/www/.htpasswd adminko
 
 echo "Restart and apply php-server"
 /etc/init.d/nginx restart
+
+echo
+echo "Done)"
