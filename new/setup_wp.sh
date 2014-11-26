@@ -14,7 +14,7 @@ echo "Create database '$WPDBNAME' (need mysql root password)"
 mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $WPDBNAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
 
 echo "Create user '$WPDBUSER' with privileges (need mysql root password)"
-mysql -u root -p -e "CREATE USER '$WPDBUSER'@'localhost' IDENTIFIED BY '$WPDBPASS'; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,LOCK TABLES ON $WPDBNAME.* TO '$WPDBUSER'@'localhost';"
+mysql -u root -p -e "CREATE USER '$WPDBUSER'@'localhost' IDENTIFIED BY '$WPDBPASS'; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,LOCK,ALTER TABLES ON $WPDBNAME.* TO '$WPDBUSER'@'localhost';"
 
 echo "Import data to database from dump"
 mysql -u ${WPDBUSER} -p${WPDBPASS} ${WPDBNAME} < ${VHOST_DIR}${SITE}/www/dump.sql
