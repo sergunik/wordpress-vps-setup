@@ -6,6 +6,8 @@ Bash scripts for setup VPS for sites on WordPress.
 #How to run?
 ```
 sh setup_vps.sh
+sh setup_vhost.sh
+...
 ```
 
 ## Setup
@@ -16,10 +18,10 @@ sh setup_vps.sh
 
 ##BackUp
 - **backup_wordpress.sh** - BackUp database and files (Script could be used via Cron or manually)
-- **backup_wordpress_all.sh** - BackUp all sites in _/var/vhost/*_ (Script has extra parameters. Run `sh backup_wordpress_all.sh -h`)
+- **backup_wordpress_all.sh** - BackUp all sites in _/var/vhost/*_ (Script has extra parameters. Show help: `sh backup_wordpress_all.sh -h`)
 
 ##Upgrade
-- **upgrade_wordpress.sh** - Download and replace files of new WordPress _(Could be used after some time you for upgrade WordPress to more newest)_
+- **upgrade_wordpress.sh** - Download and replace files of new WordPress (Could be used after some time you for upgrade WordPress to more newest)
 
 ##Uninstall
 - _in progress..._
