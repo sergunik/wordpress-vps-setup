@@ -8,8 +8,6 @@ Bash scripts for setup VPS for sites on WordPress.
 sh setup_vps.sh
 ```
 
-#Functionality
-
 ## Setup
 1. *setup_vps* - Install mc, nano, nginx, mysql and start them
 2. *setup_vhost* - Create virtual host (from prototype.host) and create directories in _/var/vhost_
@@ -17,11 +15,11 @@ sh setup_vps.sh
 4. *setup_wordpress* - Download and unpack latest version of WordPress
 
 ##BackUp
-Script could be used via Cron or manually.
 5. *backup_wordpress* - BackUp database and files of WordPress site
+_Script could be used via Cron or manually_
 
 ##Upgrade
-After some time you can upgrade WordPress to more newest.
-5. *upgrade_wordpress* - Download and replace files of new WordPress
+6. *upgrade_wordpress* - Download and replace files of new WordPress
+_After some time you can upgrade WordPress to more newest_
 
 
