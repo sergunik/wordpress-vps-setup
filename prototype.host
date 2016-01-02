@@ -19,7 +19,7 @@ server {
         error_page 403 = 404;
 
         location / {
-                try_files $uri $uri/ index.php;
+                try_files $uri $uri/ /index.php?$args;
         }
 
         location ~ /\.ht {
@@ -34,10 +34,10 @@ server {
 
         #Common deny or internal locations, to help prevent access to areas of
         #the site that should not be public
-        location ~ ^/wp-admin/(.*)$ {
-                auth_basic "Administrator Login";
-                auth_basic_user_file /var/vhost/%SITE%/www/.htpasswd;
-        }
+        #location ~ ^/wp-admin/(.*)$ {
+        #        auth_basic "Administrator Login";
+        #        auth_basic_user_file /var/vhost/%SITE%/www/.htpasswd;
+        #}
         location ~* wp-admin/includes {
                 deny all;
         }
