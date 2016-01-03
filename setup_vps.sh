@@ -4,8 +4,11 @@ clear
 echo "+ Update repositories"
 apt-get update
 
-echo "+ Instal MC"
+echo "+ Instal midnight commander"
 apt-get install mc
+
+echo "+ Instal git"
+apt-get install git
 
 echo "+ Instal nano editor"
 apt-get install nano
