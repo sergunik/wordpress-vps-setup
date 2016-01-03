@@ -1,12 +1,8 @@
 #!/bin/bash
 
 clear
-read -p "Please enter site name (like google.com): " SITE
-VHOST_DIR="/var/vhost/"
-WWW_DIR=${VHOST_DIR}${SITE}/www
-
 read -p "Please enter new database name: " WPDBNAME
-read -p "Please enter new database user: " WPDBUSER
+read -p "Please enter new database user (no more 16 symbols): " WPDBUSER
 read -p "Please enter new database user password: " WPDBPASS
 read -p "Please enter root password to MySQL: " MYSQL_ROOT_PASS
 
@@ -32,7 +28,7 @@ esac
 read -p "Do you need to import data from file [y/n]? " yn
 case ${yn} in
     [Yy]* )
-        read -p "Please type path to sql-file" MYSQL_DUMP
+        read -p "Please type path to sql-file: " MYSQL_DUMP
         mysql -u ${WPDBUSER} -p${WPDBPASS} ${WPDBNAME} < ${MYSQL_DUMP}
         echo "+ Data imported"
         ;;
