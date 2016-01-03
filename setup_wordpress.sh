@@ -25,6 +25,7 @@ rm -rf latest.tar.gz
 
 echo "+ Copying files over"
 cp -a ./wordpress/* ${WWW_DIR}/
+rm -rf ./wordpress
 
 echo "+ Chmod dirs in '${wp_root}'"
 chown -R www-data:www-data ${WWW_DIR}/*
